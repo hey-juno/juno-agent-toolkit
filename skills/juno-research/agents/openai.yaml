@@ -1,0 +1,4 @@
+interface:
+  display_name: "Juno Research"
+  short_description: "Run customer research and retrieve Juno evidence"
+  default_prompt: "Use $juno-research to prepare a Juno study about why customers abandon onboarding."
