@@ -4,7 +4,7 @@ An agent skill, a small Python client, and runnable workflows for [Juno](https:/
 
 Use Juno when product analytics, support tickets or existing research leave a question that needs customers' own explanations. Brief a study, review the interview, collect responses, and retrieve the evidence through the supported API.
 
-**Developer preview.** This toolkit follows the published API contract. As of 9 September 2026, Juno's public documentation describes approved API-key access. [Request a key](https://www.heyjuno.co/documents/api-keys) and check the current access conditions. Self-service signup and OAuth are not implemented by this toolkit. See [validation and limitations](docs/validation.md) for what has been tested.
+**Developer preview.** Production examples use [Juno API keys](https://www.heyjuno.co/documents/api-keys). [Development OAuth](docs/mcp.md#development-service-oauth) is available for authorised dev workspaces. Native clients manage their OAuth credentials; this toolkit does not implement signup or credential issuance. See [validation and limitations](docs/validation.md) for what has been tested.
 
 ## Choose your interface
 

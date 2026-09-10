@@ -4,6 +4,8 @@ This walkthrough uses Juno to investigate **why customers abandon onboarding**. 
 
 This is a preview built against the [public OpenAPI snapshot](../reference/openapi.json). Its local tests do not establish a successful authenticated production study. Current key access is described in [Juno's access documentation](https://www.heyjuno.co/documents/api-keys); the publication checked on 2026-09-09 still specifies manually issued private-beta keys. See [MCP availability and setup](mcp.md) for connection limits.
 
+The Python example defaults to production and uses `JUNO_API_KEY`. A [dev MCP OAuth connection](mcp.md#development-service-oauth) does not configure it: REST uploads and downloads need separately authorised credentials for the same environment and workspace.
+
 ## Install the optional agent skill
 
 Copy this repository's complete `skills/juno-research` folder into one of the following locations. Choose project scope to make it available only in the project where you will run the research. Preserve other skills; if `juno-research` already exists, review its differences before replacing it.

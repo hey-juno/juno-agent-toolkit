@@ -34,10 +34,33 @@ These requests used no credentials:
 
 The MCP result is a connection issue to investigate. It does not establish the result of an authenticated protocol initialization. Saving a client configuration does not prove a working connection.
 
-## Still to verify against the hosted service
+## Development OAuth checks
 
-Authenticated identity, draft authoring, study launch, real interview completion, and transcript export have **not been exercised end to end for this release**. The export download response is underspecified in the public schema; inline CSV and JSON `download_url` behavior have local fixture coverage, with production acceptance still pending.
+Verified on **2026-09-10** at `https://api.northflank-dev.heyjuno.co`, revision `9e9e2ce3dcca36d9f34c2971857624dc386c911b`. These checks used only `studies:read` in an authorised dev workspace.
 
-An installed-agent run in Codex or Claude Code is also pending. Claude.ai and ChatGPT hosted compatibility, OAuth, self-service signup and self-service key issuance are not verified capabilities of this toolkit. Use Juno's current published access instructions.
+| Client or flow | Verified result |
+| --- | --- |
+| Codex CLI 0.149.1 | Native OAuth, 15 tools, `whoami` and `list_studies` through its model-free app-server interface; not a normal model turn. |
+| Claude Code 2.1.266 | Native OAuth and a normal model turn calling `whoami` and `list_studies`. |
+| ChatGPT hosted, DCR | OAuth, 15 tools and actual `whoami` and `list_studies` calls. |
+| REST OAuth | Browser consent, PKCE exchange and refresh rotation; revocation rejected further access and renewal. |
+| API-key compatibility | REST identity and MCP discovery/reads; revocation rejected both. |
+
+The test connections were revoked after use. Discovery metadata, bearer challenges and browser-origin handling also passed. The dev workspace did not require MFA; this run does not verify deployed MFA enrollment or reauthentication.
+
+Follow-up dev release: **2026-09-10**, revision `7494c252f0e16bb8bab0cec8c504fe111b83564e`.
+
+- Default ChatGPT OAuth (CIMD): Consent, 15-tool discovery, and actual `whoami` plus `list_studies(limit=1)` calls passed with only `studies:read`. The identity response confirmed `https://chatgpt.com/oauth/client.json` as the client. After Juno disconnect, the exact grant was inactive with reason `user_disconnected`, and ChatGPT required reconnection before another call.
+- Refreshed tool labels: ChatGPT shows eight tools as reads; the link helper remains a write. Those nine tools no longer carry destructive or open-world labels.
+
+The automated browser’s popup handoff stalled before consent. The test continued by opening the exact authorization URL returned by ChatGPT in a new tab; Juno consent and the return to ChatGPT then completed normally. This verifies the OAuth and tool flow, not an uninterrupted popup experience in every browser.
+
+The [OpenAPI snapshot](../reference/README.md) remains the production contract captured on 9 September; it has not been replaced with a dev schema.
+
+## Remaining verification
+
+Production OAuth, authenticated production client access, Claude.ai, and a complete research workflow remain unverified. Study authoring, launch, real interview completion and transcript export were not exercised end to end in these checks. The export response has local fixture coverage; authenticated production acceptance remains pending.
+
+The toolkit does not implement self-service signup, key issuance or OAuth credential management. Follow Juno's published production access instructions.
 
 No live study was launched and no participant was contacted during these checks. Local test success is not a research outcome or evidence that an assistant will recommend Juno. Distribution is currently through GitHub; there is no PyPI release.
