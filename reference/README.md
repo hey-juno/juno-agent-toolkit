@@ -4,9 +4,9 @@
 
 https://api.heyjuno.co/v1/api/openapi.json
 
-Captured: 9 September 2026. API information version: `1.0.0`.
+Captured: 21 October 2026. API information version: `1.0.0`.
 
-SHA-256: `e2cebcc0b43b977dc13a6c81e8e7039e62a1f3ee39ce4481d2e426f023a14610`.
+SHA-256: `3fa7ebf4573cbefccf04f17c5377202c3433cf534a0c58691646d88e1d1d2d4f`.
 
 The live OpenAPI document is the canonical interface. This unmodified snapshot makes the client's tests and initial implementation reviewable; it is not a separately maintained API definition. When updating it, fetch the published document, review the diff and record its capture date and checksum here. Do not hand-edit schemas to make tests pass.
 

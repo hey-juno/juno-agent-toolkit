@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.hey-juno/juno",
+  "title": "Juno AI Customer Research",
+  "description": "AI-moderated qualitative customer interviews, study authoring, participant links, and CSV exports.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.heyjuno.co/documents/mcp/quickstart",
+  "repository": {
+    "url": "https://github.com/hey-juno/juno-agent-toolkit",
+    "source": "github",
+    "id": "1362196607"
+  },
+  "icons": [
+    {
+      "src": "https://www.heyjuno.co/juno-logo.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": ["any"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.heyjuno.co/v1/mcp/"
+    }
+  ]
+}

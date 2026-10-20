@@ -245,7 +245,9 @@ class ClientTests(unittest.TestCase):
         snapshot = json.loads((Path(__file__).parents[1] / "reference/openapi.json").read_text())
         operations = {
             "/me": "get", "/studies": "get post", "/studies/{study_id}": "get",
-            "/studies/{study_id}/interview-link": "get", "/studies/jobs/{job_id}": "get",
+            "/studies/{study_id}/interview-link": "get",
+            "/studies/{study_id}/participant-links": "post",
+            "/studies/jobs/{job_id}": "get",
             "/studies/{study_id}/mode": "put", "/interviews": "get",
             "/interviews/{interview_id}": "get", "/exports": "post",
             "/exports/{job_id}": "get", "/exports/{job_id}/download": "get",

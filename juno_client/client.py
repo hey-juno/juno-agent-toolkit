@@ -108,6 +108,24 @@ class JunoClient:
         """Get the durable link. This does not send it or change collection mode."""
         return _object(self._request("GET", f"/studies/{_uuid(study_id)}/interview-link"))
 
+    def create_participant_link(self, study_id: str, *, context: dict[str, str] | None = None,
+                                audience: str = "group", note: str | None = None,
+                                idempotency_key: str | None = None) -> dict:
+        """Mint an invite link carrying participant context and optional interviewer guidance."""
+        if not isinstance(audience, str) or audience not in {"group", "person"}:
+            raise ValueError("audience must be 'group' or 'person'")
+        body: dict = {"audience": audience}
+        if context is not None:
+            if not isinstance(context, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in context.items()):
+                raise ValueError("context must be a dict of string keys and values")
+            body["context"] = context
+        if note is not None:
+            if not isinstance(note, str):
+                raise ValueError("note must be a string")
+            body["note"] = note
+        return _object(self._request("POST", f"/studies/{_uuid(study_id)}/participant-links",
+                                     payload=body, idempotency_key=idempotency_key))
+
     def set_study_mode(self, study_id: str, mode: str) -> dict:
         """Explicit collection action; live permits real interviews and credit use."""
         if not isinstance(mode, str) or mode not in {"test", "live", "paused", "closed"}:

@@ -4,7 +4,7 @@ An agent skill, a small Python client, and runnable workflows for [Juno](https:/
 
 Use Juno when product analytics, support tickets or existing research leave a question that needs customers' own explanations. Brief a study, review the interview, collect responses, and retrieve the evidence through the supported API.
 
-**Developer preview.** Production examples use [Juno API keys](https://www.heyjuno.co/documents/api-keys). [Development OAuth](docs/mcp.md#development-service-oauth) is available for authorised dev workspaces. Native clients manage their OAuth credentials; this toolkit does not implement signup or credential issuance. See [validation and limitations](docs/validation.md) for what has been tested.
+**Self-service API keys and OAuth 2.1.** Production supports self-service [Juno API keys](https://www.heyjuno.co/documents/api-keys) (`jsk_live_…` / `jsk_test_…`) and [OAuth 2.1 with dynamic client registration and PKCE S256](https://www.heyjuno.co/documents/oauth). Native MCP clients (Claude Code, OpenAI Codex, ChatGPT) can connect directly over OAuth or with a bearer key; this Python toolkit uses `JUNO_API_KEY` and does not implement signup or credential issuance. Juno's remote MCP server is listed in the Official Model Context Protocol Registry as `io.github.hey-juno/juno` ([`server.json`](server.json)). See [validation and limitations](docs/validation.md) for what has been tested.
 
 ## Choose your interface
 
